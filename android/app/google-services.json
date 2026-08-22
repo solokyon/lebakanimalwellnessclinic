@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "931455965683",
+    "project_id": "vet-capstone-a4d8b",
+    "storage_bucket": "vet-capstone-a4d8b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:931455965683:android:6eb8fa86c075dc45a59a86",
+        "android_client_info": {
+          "package_name": "com.example.lebakanimalwellnessclinic"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA29rPkiJkkFbzpp-2XypPeYsOzR0guX1o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
