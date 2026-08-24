@@ -7,6 +7,8 @@ environment:
   sdk: ^3.13.1
 
 dependencies:
+  cloud_firestore: ^6.8.0
+  firebase_auth: ^6.5.7
   firebase_core: ^4.13.0
   flutter:
     sdk: flutter
@@ -18,4 +20,6 @@ dev_dependencies:
   flutter_lints: ^6.0.0
 
 flutter:
+  assets:
+    - assets/
   uses-material-design: true
