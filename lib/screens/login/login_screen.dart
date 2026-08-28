@@ -1,19 +1,20 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lebakanimalwellnessclinic/screens/login/login_desktop.dart';
+import 'package:lebakanimalwellnessclinic/screens/login/login_mobile.dart';
+
 
 class LoginScreen extends StatefulWidget {
-  const new({super.key});
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-
-  
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   void login()async{
     try{
@@ -69,3 +70,4 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+
