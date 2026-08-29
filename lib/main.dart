@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lebakanimalwellnessclinic/core/theme/app_theme.dart';
 import 'package:lebakanimalwellnessclinic/screens/admin_screen.dart';
 import 'package:lebakanimalwellnessclinic/screens/login/login_screen.dart';
 import 'firebase_options.dart';
@@ -33,6 +34,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      theme: AppTheme.lightTheme,
       routerConfig: _router,
     );
   }
