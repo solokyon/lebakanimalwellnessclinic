@@ -24,4 +24,5 @@ dev_dependencies:
 flutter:
   assets:
     - assets/
+    - assets/scroll_view/
   uses-material-design: true

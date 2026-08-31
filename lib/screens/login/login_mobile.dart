@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:lebakanimalwellnessclinic/core/theme/app_colors.dart';
 
@@ -18,19 +20,47 @@ class LoginMobile extends StatefulWidget {
 }
 
 class _LoginMobileState extends State<LoginMobile> {
+  final List<String> Images = [
+    'assets/scroll_view/1w.jpg',
+    'assets/scroll_view/2w.jpg',
+    'assets/scroll_view/3w.jpg',
+    'assets/scroll_view/4w.jpg',
+    'assets/scroll_view/5w.jpg',
+    'assets/scroll_view/6w.jpg',
+    'assets/scroll_view/7w.jpg',
+  ];
+  int _currentIndex = 0;
+  late Timer _logintimer;
+
+  @override
+  void initState() {
+    _logintimer = Timer.periodic(const Duration(seconds: 8), (timer) {
+      setState(() {
+        _currentIndex = (_currentIndex + 1) % Images.length; // Assuming you have 7 images
+      });
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Center(
         child: SingleChildScrollView(
+          physics: const NeverScrollableScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  
-                ], 
+                  Image.asset('assets/horizontal_text_logo.png', width: 200),
+                ],
               ),
               Container(
                 width: 60,
@@ -40,6 +70,15 @@ class _LoginMobileState extends State<LoginMobile> {
                   borderRadius: BorderRadius.circular(100),
                 ),
               ),
+              Text(
+                'Welcome to Lebak AWC App',
+                style: Theme.of(context).textTheme.labelMedium,
+              ),
+              Text(
+                'Sign in to your staff account',
+                style: Theme.of(context).textTheme.labelSmall,
+              ),
+
             ],
           ),
         ),
