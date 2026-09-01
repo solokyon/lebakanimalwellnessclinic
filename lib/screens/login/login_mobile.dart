@@ -20,8 +20,8 @@ class LoginMobile extends StatefulWidget {
 }
 
 class _LoginMobileState extends State<LoginMobile> {
-  final List<String> Images = [
-    'assets/scroll_view/1w.jpg',
+  final List<String> images = [
+    'assets/scroll_view/1w.png',
     'assets/scroll_view/2w.jpg',
     'assets/scroll_view/3w.jpg',
     'assets/scroll_view/4w.jpg',
@@ -36,7 +36,7 @@ class _LoginMobileState extends State<LoginMobile> {
   void initState() {
     _logintimer = Timer.periodic(const Duration(seconds: 8), (timer) {
       setState(() {
-        _currentIndex = (_currentIndex + 1) % Images.length; // Assuming you have 7 images
+        _currentIndex = (_currentIndex + 1) % images.length;
       });
     });
     super.initState();
@@ -44,6 +44,7 @@ class _LoginMobileState extends State<LoginMobile> {
 
   @override
   void dispose() {
+    _logintimer.cancel();
     super.dispose();
   }
 
@@ -78,7 +79,13 @@ class _LoginMobileState extends State<LoginMobile> {
                 'Sign in to your staff account',
                 style: Theme.of(context).textTheme.labelSmall,
               ),
-
+              AnimatedSwitcher(
+                duration: Duration(milliseconds: 600),
+                child: Image.asset(
+                  images[_currentIndex],
+                  key: ValueKey<int>(_currentIndex),
+                ),
+              )
             ],
           ),
         ),
