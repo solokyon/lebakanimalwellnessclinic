@@ -21,7 +21,7 @@ class LoginMobile extends StatefulWidget {
 
 class _LoginMobileState extends State<LoginMobile> {
   final List<String> images = [
-    'assets/scroll_view/1w.png',
+    'assets/scroll_view/1w.jpg',
     'assets/scroll_view/2w.jpg',
     'assets/scroll_view/3w.jpg',
     'assets/scroll_view/4w.jpg',
@@ -55,7 +55,7 @@ class _LoginMobileState extends State<LoginMobile> {
         child: SingleChildScrollView(
           physics: const NeverScrollableScrollPhysics(),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -63,6 +63,9 @@ class _LoginMobileState extends State<LoginMobile> {
                   Image.asset('assets/horizontal_text_logo.png', width: 200),
                 ],
               ),
+
+              Text("STAFF ACCESS"),
+
               Container(
                 width: 60,
                 height: 4,
@@ -76,16 +79,64 @@ class _LoginMobileState extends State<LoginMobile> {
                 style: Theme.of(context).textTheme.labelMedium,
               ),
               Text(
-                'Sign in to your staff account',
+                ' Sign in to continue to the clinic system',
                 style: Theme.of(context).textTheme.labelSmall,
               ),
               AnimatedSwitcher(
                 duration: Duration(milliseconds: 600),
-                child: Image.asset(
-                  images[_currentIndex],
-                  key: ValueKey<int>(_currentIndex),
+                child: ClipOval(
+                  child: Image.asset(
+                    images[_currentIndex],
+                    width: 100,
+                    fit: BoxFit.cover,
+                    key: ValueKey<int>(_currentIndex),
+                  ),
                 ),
-              )
+              ),
+
+              Padding(
+                padding: const EdgeInsets.fromLTRB(32.0,0,32.0,0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Email Address"),
+                
+                    TextField(
+                      controller: widget.emailController,
+                      decoration: InputDecoration(
+                        hintText: 'staff@lebakawc.com',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                      ),
+                    ),
+
+                    Text("Password"),
+
+                    TextField(
+                      controller: widget.emailController,
+                      decoration: InputDecoration(
+                        hintText: 'Enter your password',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                      ),
+                    ),
+
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Text("Forgot Password?",)
+                    ),
+                  ],
+                ),
+              ),
+
+              ElevatedButton(
+                onPressed: widget.login,
+                child: Text('Login'),
+              ),
+
+              Text("FOR AUTHORIZED STAFF ONLY"),
             ],
           ),
         ),
