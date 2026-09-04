@@ -7,6 +7,7 @@ class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData(
       useMaterial3: true,
+      fontFamily: 'PlusJakartaSans',
 
       scaffoldBackgroundColor: AppColors.background,
 
