@@ -21,25 +21,21 @@ class LoginMobile extends StatefulWidget {
 
 class _LoginMobileState extends State<LoginMobile> {
   final List<String> images = [
-    'assets/scroll_view/1w.jpg',
-    'assets/scroll_view/2w.jpg',
-    'assets/scroll_view/3w.jpg',
-    'assets/scroll_view/4w.jpg',
-    'assets/scroll_view/5w.jpg',
-    'assets/scroll_view/6w.jpg',
-    'assets/scroll_view/7w.jpg',
+    'assets/scroll_view/caro1.png',
+    'assets/scroll_view/caro2.png',
+    'assets/scroll_view/caro3.png',
   ];
   int _currentIndex = 0;
   late Timer _logintimer;
 
   @override
   void initState() {
+    super.initState();
     _logintimer = Timer.periodic(const Duration(seconds: 8), (timer) {
       setState(() {
         _currentIndex = (_currentIndex + 1) % images.length;
       });
-    });
-    super.initState();
+    });  
   }
 
   @override
@@ -53,9 +49,9 @@ class _LoginMobileState extends State<LoginMobile> {
     return SafeArea(
       child: Center(
         child: SingleChildScrollView(
+          padding: const EdgeInsets.fromLTRB(24, 28, 24, 24),
           physics: const NeverScrollableScrollPhysics(),
           child: Column(
-            
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -64,16 +60,19 @@ class _LoginMobileState extends State<LoginMobile> {
                 ],
               ),
 
-              Text("STAFF ACCESS"),
+              const SizedBox(height: 8),
 
               Container(
-                width: 60,
+                width: 52,
                 height: 4,
                 decoration: BoxDecoration(
                   color: AppColors.primary,
                   borderRadius: BorderRadius.circular(100),
                 ),
               ),
+
+              SizedBox(height: 14),
+
               Text(
                 'Welcome to Lebak AWC App',
                 style: Theme.of(context).textTheme.labelMedium,
@@ -81,62 +80,88 @@ class _LoginMobileState extends State<LoginMobile> {
               Text(
                 ' Sign in to continue to the clinic system',
                 style: Theme.of(context).textTheme.labelSmall,
+                
               ),
-              AnimatedSwitcher(
-                duration: Duration(milliseconds: 600),
-                child: ClipOval(
-                  child: Image.asset(
-                    images[_currentIndex],
-                    width: 100,
-                    fit: BoxFit.cover,
-                    key: ValueKey<int>(_currentIndex),
+
+              Padding(
+                padding: const EdgeInsets.fromLTRB(32.0, 0, 32.0, 0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                  child: AnimatedSwitcher(
+                    duration: Duration(milliseconds: 600),
+                    child: Image.asset(
+                      fit: BoxFit.cover,
+                      images[_currentIndex],
+                      key: ValueKey<int>(_currentIndex),
+                    ),
                   ),
                 ),
               ),
 
               Padding(
-                padding: const EdgeInsets.fromLTRB(32.0,0,32.0,0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Email Address"),
-                
-                    TextField(
-                      controller: widget.emailController,
-                      decoration: InputDecoration(
-                        hintText: 'staff@lebakawc.com',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8.0),
+                padding: EdgeInsets.all(16),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 32, right: 32),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Email Address"),
+
+                        TextField(
+                          controller: widget.emailController,
+                          decoration: InputDecoration(
+                            hintText: 'staff@lebakawc.com',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
 
-                    Text("Password"),
+                        Text("Password"),
 
-                    TextField(
-                      controller: widget.emailController,
-                      decoration: InputDecoration(
-                        hintText: 'Enter your password',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8.0),
+                        TextField(
+                          controller: widget.passwordController,
+                          decoration: InputDecoration(
+                            hintText: 'Enter your password',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
 
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Text("Forgot Password?",)
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: Text("Forgot Password?"),
+                        ),
+
+                        Align(
+                          alignment: Alignment.center,
+                          child: Column(
+                            children: [
+                              Text("FOR AUTHORIZED STAFF ONLY"),
+                              ElevatedButton(
+                                onPressed: widget.login,
+                                child: Text('Login'),
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ),
 
-              ElevatedButton(
-                onPressed: widget.login,
-                child: Text('Login'),
-              ),
-
-              Text("FOR AUTHORIZED STAFF ONLY"),
+              Text("© 2024 Laplace Labs")
             ],
           ),
         ),
